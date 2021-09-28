@@ -25,4 +25,5 @@ jobs:
             elif [ "$RUNNER_OS" == "Windows" ]; then
               Write-Host ${{ steps.create-release-draft.outputs.release-url }}
             fi
+        shell: bash
         
