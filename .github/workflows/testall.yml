@@ -19,4 +19,10 @@ jobs:
         with:
           milliseconds: 1000
       - name: Print URL of the release draft
-        run: echo ${{ steps.create-release-draft.outputs.release-url }}
+        run: |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+              echo ${{ steps.create-release-draft.outputs.release-url }}
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+              Write-Host ${{ steps.create-release-draft.outputs.release-url }}
+            fi
+        
