@@ -1,5 +1,7 @@
 import * as core from '@actions/core'
 import {wait} from './wait'
+import * as event from './event'
+
 
 async function run(): Promise<void> {
   try {
@@ -11,6 +13,9 @@ async function run(): Promise<void> {
     core.debug(new Date().toTimeString())
 
     core.setOutput('time', new Date().toTimeString())
+
+    const tag = event.getCreateTag()
+
   } catch (error) {
     core.setFailed(error.message)
   }
