@@ -15,6 +15,9 @@ async function run(): Promise<void> {
     core.setOutput('time', new Date().toTimeString())
 
     const tag = event.getCreateTag()
+    if (tag) {
+      
+    }
 
   } catch (error) {
     core.setFailed(error.message)
