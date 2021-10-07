@@ -8,7 +8,7 @@ export function getCreateTag() : string | null {
   }
 
   if (github.context.payload.ref_type !== 'tag') {
-    core.info(`The created reference was a branch, not a tagw`)
+    core.info(`The created reference was a branch, not a tag yet`)
     return null
   }
 
