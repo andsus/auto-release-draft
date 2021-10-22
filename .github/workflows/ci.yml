@@ -1,6 +1,15 @@
 name: CI
 on:
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'username'
+        required: true
+        default: 'andsus'
 
 jobs:
   build:
@@ -12,8 +21,7 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - name: Get the sources
-        uses: actions/checkout@v2
-      - name: Run multiple-line
+        uses: actions/checkout@v2      - name: Run multiple-line
         run: |
           echo add other actions to build
-          echo yet another
+          echo "Hello ${{ github.event.inputs.name }}! "
