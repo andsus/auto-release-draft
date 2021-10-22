@@ -21,7 +21,9 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - name: Get the sources
-        uses: actions/checkout@v2      - name: Run multiple-line
+        uses: actions/checkout@v2      
+      
+      - name: Run multiple-line
         run: |
           echo add other actions to build
           echo "Hello ${{ github.event.inputs.name }}! "
