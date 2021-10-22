@@ -17,6 +17,7 @@ async function run(): Promise<void> {
     const tag = event.getCreateTag()
     if (tag) {
       core.debug(tag)
+      //
     }
 
   } catch (error) {
