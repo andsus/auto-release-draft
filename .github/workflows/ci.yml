@@ -4,6 +4,10 @@ on:
     branches:
       - main
 
+env:
+  user_type: "rookie"
+  user_experience: "2 weeks"
+
   # workflow_dispatch:
   #   inputs:
   #     name:
@@ -13,7 +17,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: CI jobs
     #runs-on: self-hosted
     runs-on: ${{ matrix.os }}
     strategy:
@@ -25,5 +29,5 @@ jobs:
       
       - name: Run multiple-line
         run: |
-          echo add other actions to build
+          echo User type $user_type!! You have $user_experience experience.
           echo ${{ secrets.AZURE_SECRET_USER }}
