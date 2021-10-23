@@ -4,12 +4,12 @@ on:
     branches:
       - main
 
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'username'
-        required: true
-        default: 'andsus'
+  # workflow_dispatch:
+  #   inputs:
+  #     name:
+  #       description: 'username'
+  #       required: true
+  #       default: 'andsus'
 
 jobs:
   build:
@@ -26,4 +26,4 @@ jobs:
       - name: Run multiple-line
         run: |
           echo add other actions to build
-          echo "Hello ${{ github.event.inputs.name }}! "
+          echo "Hello ${{ secrets.AZURE_SECRET_USER }}! "
