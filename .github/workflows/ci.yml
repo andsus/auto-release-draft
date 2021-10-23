@@ -29,5 +29,5 @@ jobs:
       
       - name: Run multiple-line
         run: |
-          echo User type $user_type!! You have $user_experience experience.
+          echo User type ${{ user_type }}!! You have ${{ user_experience }} experience.
           echo ${{ secrets.AZURE_SECRET_USER }}
