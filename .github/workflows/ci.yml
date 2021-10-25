@@ -4,9 +4,9 @@ on:
     branches:
       - main
 
-env:
-  user_type: "rookie"
-  user_experience: "2 weeks"
+        #env:
+        #user_type: "rookie"
+        #user_experience: "2 weeks"
 
   # workflow_dispatch:
   #   inputs:
@@ -24,10 +24,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+
+    env:
+      user_name: "rookie"
+      user_experience: "2 weeks"
+
     steps:
-      env:
-        user_name: "rookie"
-        user_experience: "2 weeks"
 
       - name: Get the sources
         uses: actions/checkout@v2      
