@@ -38,3 +38,7 @@ jobs:
         run: |
           echo ${{ secrets.AZURE_SECRET_USER }}
           echo User type $user_name! You have $user_experience experience.
+
+      - name: Run docker version
+        run: |
+          docker version
