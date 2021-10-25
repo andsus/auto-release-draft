@@ -25,10 +25,13 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     steps:
+        env:
+          user_type: "rookie"
+          user_experience: "2 weeks"
       - name: Get the sources
         uses: actions/checkout@v2      
       
       - name: Run multiple-line
         run: |
           echo ${{ secrets.AZURE_SECRET_USER }}
-          # echo User type ${{ user_type }}!! You have ${{ user_experience }} experience.
+          echo User type ${{ user_type }}! You have ${{ user_experience }} experience.
