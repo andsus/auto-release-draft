@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0
     - name: set env variable
       run: |
-        echo "STD_OUTPUT=$(ls -l | head -1 | awk '{print $1 "-" $2 }')" >> $GITHUB_ENV"
+        echo "STD_OUTPUT=$(ls -l | head -1 | awk '{print $1 "-" $2 }')" >> $GITHUB_ENV
     - name: echo env var
       run: echo ${{ env.STD_OUTPUT }}
           
