@@ -17,10 +17,12 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
+    - name: cd to project
+      run: cd /home/andre/workspace/accountmanagementservice
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        projectBaseDir: /home/andre/workspace/accountmanagementservice
+        projectBaseDir: src
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
