@@ -19,9 +19,9 @@ jobs:
         fetch-depth: 0
     - name: set env variable
       run: |
-        echo ::set-env name=STD_OUTPUT::$(ls -l | head -1 | awk '{print $1 "-" $2 }')
+        echo "STD_OUTPUT=$(ls -l | head -1 | awk '{print $1 "-" $2 }')" >> $GITHUB_ENV"
     - name: echo env var
-      run: echo $env.STD_OUTPUT
+      run: echo ${{ env.STD_OUTPUT }}
           
     - name: cd to project
       run: cd /home/andre/workspace/accountmanagementservice
