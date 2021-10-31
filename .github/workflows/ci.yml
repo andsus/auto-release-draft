@@ -18,8 +18,8 @@ on:
 jobs:
   build:
     name: CI jobs
-    runs-on: p50wsl
-    #self-hosted
+    #runs-on: p50wsl
+    runs-on : self-hosted
     #runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -41,4 +41,4 @@ jobs:
 
       - name: Run docker version
         run: |
-          docker.exe version
+          docker version
