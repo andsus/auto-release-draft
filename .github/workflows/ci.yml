@@ -39,6 +39,27 @@ jobs:
           echo ${{ secrets.AZURE_SECRET_USER }}
           echo User type $user_name! You have $user_experience experience.
 
-      - name: Run docker version
+      - name: create container
+        run: podman build . --file Dockerfile -t whs:bwapp
+        
+      - name: start bwapp 
         run: |
-          podman version
+          podman run -d -p 3005:80 whs:bwapp
+          wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
+
+      # - name: run security test        
+      #   env:
+      #     LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
+      #   run: |
+      #     #wget https://github.com/whitehatsec-innovations/distribution/releases/latest/download/IDDast.deb          
+      #     #sudo apt-get install -f ./IDDast.deb 
+      #     #sudo dast-attacker-cli -accept-eula=Yes -license-key=${{ secrets.LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
+      #     dast-attacker-cli -accept-eula=Yes -license-key=${{ secrets.LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
+
+      - name: stop bwapp 
+        run: |
+          podman stop $(podman ps -q --filter ancestor=whs:bwapp)
+
+      # - name: remove bwapp 
+      #   run: |
+      #     podman stop $(podman ps -q --filter ancestor=whs:bwapp)
