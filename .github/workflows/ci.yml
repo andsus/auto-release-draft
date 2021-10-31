@@ -42,10 +42,10 @@ jobs:
       - name: create container
         run: podman build . --file Dockerfile -t whs:bwapp
         
-      - name: start bwapp 
-        run: |
-          podman run -d -p 3005:80 whs:bwapp
-          wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
+      # - name: start bwapp 
+      #   run: |
+      #     podman run -d -p 3005:80 whs:bwapp
+      #     wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
 
       # - name: run security test        
       #   env:
@@ -56,9 +56,9 @@ jobs:
       #     #sudo dast-attacker-cli -accept-eula=Yes -license-key=${{ secrets.LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
       #     dast-attacker-cli -accept-eula=Yes -license-key=${{ secrets.LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
 
-      - name: stop bwapp 
-        run: |
-          podman stop $(podman ps -q --filter ancestor=whs:bwapp)
+      # - name: stop bwapp 
+      #   run: |
+      #     podman stop $(podman ps -q --filter ancestor=whs:bwapp)
 
       # - name: remove bwapp 
       #   run: |
