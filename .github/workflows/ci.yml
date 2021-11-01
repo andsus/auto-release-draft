@@ -39,8 +39,8 @@ jobs:
           echo ${{ secrets.AZURE_SECRET_USER }}
           echo User type $user_name! You have $user_experience experience.
 
-      - name: create container
-        run: podman build . --file Dockerfile -t whs:bwapp
+      # - name: create container
+      #   run: podman build . --file Dockerfile -t whs:bwapp
         
       # - name: start bwapp 
       #   run: |
