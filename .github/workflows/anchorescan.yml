@@ -4,6 +4,8 @@ on:
     branches:
       - main
   pull_request:
+env:
+  IMAGE: 'docker.io/andsus/providersearchdataservice-v2:latest'
 jobs:
   build:
     name: anchorescanjob
@@ -17,8 +19,7 @@ jobs:
         uses: anchore/scan-action@v3.1.0
         id: scanimage
         with:
-          image-name: 'docker.io/andsus/providersearchdataservice-v2:latest'
-          run-quality-checks: true
+          image: $IMAGE
           severity-cutoff: critical
           fail-build: false
           debug: true
