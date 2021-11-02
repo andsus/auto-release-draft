@@ -13,18 +13,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+        with:
+          fetch-depth: 0
+      - name: Set env variable for image
+        run: |
+          echo "IMAGE_NAME=$( echo 'docker.io/andsus/providersearchdataservice-v2:latest' )" >> $GITHUB_ENV
 
       - name: Anchore Container Scan
         uses: anchore/scan-action@v3.1.0
         id: scanimage
         with:
-          image: 'docker.io/andsus/providersearchdataservice-v2:latest'
+          image: ${{ env.IMAGE_NAME }}
           severity-cutoff: critical
           fail-build: false
           debug: true
           acs-report-enable: true
-
           
       - if: always()
         name: Upload  scan results to GitHub Security tab
