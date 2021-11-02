@@ -33,13 +33,13 @@ jobs:
           severity-threshold: 'CRITICAL,HIGH'
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          scan-report-path: ./scan-results
+          
 
 
-      - if: always()
-        name: Upload  scan results to GitHub Security tab
-        uses: actions/upload-artifact@v2
-        with:
-          name: scan-results
-          path: ./scan-results
+      # - if: always()
+      #   name: Upload  scan results to GitHub Security tab
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: scan-results
+      #     path: ./scan-results
 
