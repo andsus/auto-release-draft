@@ -21,11 +21,13 @@ jobs:
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
+          exit-code: 1
         env:
           TRIVY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           TRIVY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v1
+      - if: always()
+        name: Upload Trivy scan results to GitHub Security tab
+        uses: actions/upload-artifact@v2
         with:
           sarif_file: 'trivy-results.sarif'
