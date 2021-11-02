@@ -19,7 +19,7 @@ jobs:
         uses: anchore/scan-action@v3.1.0
         id: scanimage
         with:
-          image: $IMAGE
+          image: 'docker.io/andsus/providersearchdataservice-v2:latest'
           severity-cutoff: critical
           fail-build: false
           debug: true
