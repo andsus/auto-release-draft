@@ -30,7 +30,7 @@ jobs:
         with:
           image-name: 'docker.io/andsus/providersearchdataservice-v2:latest'
           run-quality-checks: true
-          severity-threshold: 'CRITICAL,HIGH'
+          severity-threshold: 'CRITICAL'
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           
