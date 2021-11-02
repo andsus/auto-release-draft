@@ -28,7 +28,7 @@ jobs:
 
       - uses: azure/container-scan@v0.1
         with:
-          image-name: 'docker.io/andsus/providersearchdataservice-v2:latest'
+          image-name: 'andsus/providersearchdataservice-v2:latest'
           run-quality-checks: true
           severity-threshold: 'CRITICAL'
           username: ${{ secrets.DOCKER_USERNAME }}
